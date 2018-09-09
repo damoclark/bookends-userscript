@@ -3,7 +3,7 @@
  *
  * Main server program
  *
- * bookends-userscript
+ * bookends-userscript server mockup
  *
  * 3/9/18
  *
@@ -16,7 +16,6 @@ const chokidar = require('chokidar') ;
 const fsPromises = require('fs').promises ;
 
 
-// app.use(express.urlencoded({extended: true})) ;
 let urlencoded = express.urlencoded({extended: true}) ;
 
 let id = 0 ;
@@ -28,6 +27,7 @@ app.post('/scan', urlencoded, (req, res) => {
 	// req.body.format ; reference format to use
 	let watcher = chokidar.watch(`${__dirname}/../tmp/${id}.output.formatted.txt`, {awaitWriteFinish: true}) ;
 
+	// When input file scanned and results written to matching file, return this file
 	watcher.on('add', path => {
 		// Read path and return to client
 		console.log(`Reading from: ${path}`) ;
@@ -54,4 +54,4 @@ app.post('/scan', urlencoded, (req, res) => {
 	}) ;
 }) ;
 
-app.listen(2001, () => console.log('Example app listening on port 2001!')) ;
+app.listen(2001, () => console.log('App listening on port 2001!')) ;
