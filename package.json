@@ -1,0 +1,35 @@
+{
+  "name": "bookends",
+  "version": "1.0.0",
+  "description": "Browser editor userscript for scanning temporary citations from Bookends Reference Manager",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "eslint": "eslint --fix src/",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify": "browserify -t [ browserify-css --inlineImages=true --autoInject=true ] -t imgurify -p [ browserify-userscript-header --file src/bookends.meta.js ] -t stringify src/index.user.js -o dist/bookends.user.js",
+    "watchify": "watchify -t [ browserify-css --inlineImages=true --autoInject=true ] -t imgurify -p [ browserify-userscript-header --file src/bookends.meta.js ] -t stringify src/index.user.js -o dist/bookends.user.js -v"
+  },
+  "author": {
+    "name": "Damien Clark",
+    "email": "damo.clarky@gmail.com",
+    "url": "https://damos.world"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "browserify": "^13.3.0",
+    "browserify-css": "^0.12.0",
+    "browserify-userscript-header": "^0.1.1",
+    "imgurify": "^2.0.0",
+    "stringify": "^5.1.0",
+    "watchify": "^3.11.0",
+    "webworkify": "^1.4.0"
+  },
+  "dependencies": {
+    "chokidar": "^2.0.4",
+    "express": "^4.16.3",
+    "superagent": "^3.8.3",
+    "superagent-gmxhr": "^1.0.0"
+  }
+}
